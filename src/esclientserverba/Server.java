@@ -25,31 +25,38 @@ public class Server {
     BufferedWriter bw;
     
     
-    public Server(int Porta){
-        int porta = 2000;
+public Server(int port){
     try{
-        ss = new ServerSocket(porta);
-        System.out.println("");
+      ss= new ServerSocket(port);
+      System.out.println("<s> in ascolto");
+      
     }catch(IOException ex){
-        Logger.getLogger(Server.class.getName());
+      System.out.println("<cs> errore nella creazione del server");
+      
     }
     
+  }
+
+  public void inAscolto(){
+    try{
+      so= ss.accept();
+      System.out.println("<s> connessione stabilita");
+      
+    }catch(IOException ex){
+      System.out.println("<cs> problema nella creazione del socket");
     }
     
-    public void inAscolto(){
-      try{
-        so = ss.accept();   
-      }catch(IOException ex){
-          Logger.getLogger(Server.class.getName());
-      }
+  }
+
+  public void scrivi(String msg){
+    try{
+      bw= new BufferedWriter(new OutputStreamWriter(so.getOutputStream()));
+      bw.write(msg+"\n");
+      bw.flush();
+    }catch(IOException ex){
+      System.out.println("<cs> impossibile inviare messaggio");
     }
     
-    public void scrivi(String messaggio){
-        try {
-            bw = new BufferedWriter(new OutputStreamerWrite (so.getOutputStream()));
-            bw.write(messaggio);
-        } catch (IOException ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+  }
+  
 }
