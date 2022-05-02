@@ -21,9 +21,9 @@ public class GestoreClient {
         try {
             Client cli = new Client(InetAddress.getLocalHost(), 2000);
             String messaggioLetto = cli.leggi();
-            System.out.println(messaggioLetto);
+            System.out.println(cli);
         } catch (UnknownHostException ex) {
-            Logger.getLogger(GestoreClient.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("<cs> impossibile trovare local host");
         }
         
         
