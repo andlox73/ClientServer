@@ -28,7 +28,7 @@ public class Client {
             so = new Socket(ip, porta);
             br = new BufferedReader(new InputStreamReader(so.getInputStream()));
             } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("<cs> errore creazione socket");
         }
     }
     
@@ -38,7 +38,7 @@ public class Client {
         try {
             msg = br.readLine();
         } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("<cs> Errore nella lettura");
         }
        
         return msg;
